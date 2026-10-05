@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PitchIA — Banca Investidora</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+  <!-- TELA DE LOGIN -->
+  <section id="tela-login" class="tela">
+    <div class="card-login">
+      <h1>🏆 PitchIA</h1>
+      <p class="sub">Banca Investidora — Pitches do Projeto Final</p>
+      <input type="email" id="email" placeholder="seu.email@aluno.ifsc.edu.br" autocomplete="email">
+      <select id="sel-turma-login"></select>
+      <button onclick="entrar()">Entrar 🚀</button>
+      <p id="erro-login" class="erro"></p>
+    </div>
+  </section>
+
+  <!-- APP -->
+  <section id="app" class="tela oculto">
+    <header>
+      <span id="boas-vindas"></span>
+      <nav>
+        <button data-aba="avaliar" class="ativo">⭐ Avaliar</button>
+        <button data-aba="dashboard">📊 Dashboard</button>
+        <button data-aba="admin" id="btn-admin" class="oculto">🔧 Admin</button>
+        <button onclick="atualizarDados()">🔄 Atualizar</button>
+        <button onclick="sair()">Sair</button>
+      </nav>
+    </header>
+
+    <!-- ABA AVALIAR -->
+    <div id="aba-avaliar">
+      <div class="barra-moedas">
+        <span>💰 Moedas restantes: <b id="saldo">100</b></span>
+        <div class="progresso"><div id="barra"></div></div>
+      </div>
+      <div id="lista-grupos"></div>
+      <button id="btn-enviar" class="grande" onclick="enviarAvaliacao()">Enviar avaliação ✅</button>
+      <p id="msg-avaliar" class="erro"></p>
+    </div>
+
+    <!-- ABA DASHBOARD -->
+    <div id="aba-dashboard" class="oculto">
+      <div id="podio"></div>
+      <div id="ranking"></div>
+    </div>
+
+    <!-- ABA ADMIN -->
+    <div id="aba-admin" class="oculto">
+      <h2>Editar grupos</h2>
+      <div id="admin-grupos"></div>
+      <button onclick="exportarDB()">⬇️ Baixar db.json atualizado</button>
+      <p class="dica">Depois do download: faça commit do arquivo no GitHub para publicar.</p>
+    </div>
+  </section>
+
+  <script src="funcoes.js"></script>
+</body>
+</html>

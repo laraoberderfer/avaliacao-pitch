@@ -1,0 +1,52 @@
+:root {
+  --fundo: #0D0A1A; --card: #171129; --borda: #2d2350;
+  --roxo: #7C3AED; --rosa: #EC4899; --texto: #F8FAFC; --cinza: #94A3B8;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, sans-serif; }
+body { background: var(--fundo); color: var(--texto); min-height: 100vh; }
+.oculto { display: none !important; }
+.erro { color: #f87171; font-size: 14px; min-height: 18px; margin-top: 8px; }
+.dica { color: var(--cinza); font-size: 13px; margin-top: 10px; }
+
+/* Login */
+.tela { max-width: 640px; margin: 0 auto; padding: 20px; }
+.card-login { background: var(--card); border: 1px solid var(--borda); border-radius: 16px; padding: 32px; margin-top: 10vh; text-align: center; }
+.card-login h1 { font-size: 32px; }
+.card-login .sub { color: var(--cinza); margin: 8px 0 24px; }
+input, select { width: 100%; padding: 14px; margin: 8px 0; border-radius: 10px; border: 1px solid var(--borda); background: #0f0c20; color: var(--texto); font-size: 16px; }
+button { background: var(--roxo); color: #fff; border: 0; border-radius: 10px; padding: 12px 20px; font-size: 16px; cursor: pointer; transition: transform .1s; }
+button:active { transform: scale(.96); }
+button.grande { width: 100%; padding: 18px; font-size: 18px; margin-top: 16px; background: var(--rosa); }
+
+/* Header */
+header { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center; padding: 14px 0; }
+nav { display: flex; gap: 6px; flex-wrap: wrap; }
+nav button { background: var(--card); border: 1px solid var(--borda); font-size: 14px; padding: 8px 12px; }
+nav button.ativo { background: var(--roxo); border-color: var(--roxo); }
+
+/* Barra de moedas */
+.barra-moedas { position: sticky; top: 0; background: var(--card); border: 1px solid var(--rosa); border-radius: 12px; padding: 12px 16px; margin-bottom: 14px; z-index: 5; }
+.progresso { height: 8px; background: #0f0c20; border-radius: 4px; margin-top: 8px; }
+#barra { height: 100%; width: 100%; background: linear-gradient(90deg, var(--roxo), var(--rosa)); border-radius: 4px; transition: width .3s; }
+
+/* Cards de grupo */
+.grupo { background: var(--card); border: 1px solid var(--borda); border-radius: 14px; padding: 16px; margin-bottom: 12px; }
+.grupo h3 { font-size: 18px; }
+.grupo .problema { color: var(--cinza); font-size: 14px; margin: 4px 0 12px; }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.chips button { padding: 8px 14px; font-size: 15px; background: #0f0c20; border: 1px solid var(--roxo); }
+.chips .menos { border-color: var(--borda); color: var(--cinza); }
+.investido { color: var(--rosa); font-weight: bold; margin-left: auto; }
+.estrelas { display: flex; gap: 4px; margin-top: 10px; font-size: 26px; cursor: pointer; }
+.estrelas span { opacity: .25; transition: opacity .15s; }
+.estrelas span.on { opacity: 1; }
+
+/* Dashboard */
+#podio { display: flex; gap: 10px; margin-bottom: 16px; }
+#podio div { flex: 1; text-align: center; background: var(--card); border-radius: 12px; padding: 14px; border: 1px solid var(--borda); }
+#podio .ouro { border-color: #fbbf24; } #podio .prata { border-color: #cbd5e1; } #podio .bronze { border-color: #d97706; }
+.linha-rank { display: flex; align-items: center; gap: 10px; background: var(--card); border-radius: 10px; padding: 10px 14px; margin-bottom: 8px; }
+.linha-rank .barra-g { height: 10px; background: linear-gradient(90deg, var(--roxo), var(--rosa)); border-radius: 5px; }
+
+/* Admin */
+#admin-grupos .grupo input { margin: 4px 0; }
