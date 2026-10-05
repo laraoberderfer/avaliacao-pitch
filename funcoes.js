@@ -27,22 +27,24 @@ const Model = {
   turma: null,
 
   async carregar() {
-    // 1) rascunho local (auto-save) tem prioridade — use o botão 🔄 para reler a planilha
     const rascunho = localStorage.getItem("pitchia_db");
     if (rascunho) { this.db = JSON.parse(rascunho); return true; }
 
-    // 2) primeira visita: busca a planilha publicada
-    try {
-      const url = URL_PLANILHA + "&cachebust=" + Date.now();
-      const resp = await fetch(url);
-      const csv = await resp.text();
-      this.db = csvParaDB(csv);
-      this.salvar();
-      return true;
-    } catch {
-      return false;
-    }
-  },
+    const url = URL_PLANILHA + "&cachebust=" + Date.now();
+    const resp = await fetch(url);                    // sem try/catch: deixa estourar
+    const texto = await resp.text();
+
+    if (!resp.ok)
+        throw new Error(`HTTP ${resp.status} — o Google recusou a URL. Confira o formato /d/e/.../pub?output=csv`);
+    if (texto.trim().startsWith("<"))
+        throw new Error("Recebi uma página HTML (login ou erro 404), não CSV. Refaça: Arquivo → Compartilhar → Publicar na web → aba Grupos → CSV");
+    if (texto.trim() === "")
+        throw new Error("CSV veio vazio — a aba publicada está sem dados ou o gid está errado");
+
+    this.db = csvParaDB(texto);
+    this.salvar();
+     return true;
+    },
 
   salvar() { localStorage.setItem("pitchia_db", JSON.stringify(this.db)); },
 
@@ -320,10 +322,13 @@ document.querySelectorAll("nav button[data-aba]").forEach(b =>
   b.addEventListener("click", () => trocarAba(b.dataset.aba)));
 
 (async function boot() {
-  // diagnóstico 1: placeholder na URL
-  if (URL_PLANILHA.includes("SEU_ID_AQUI")) {
+  try {
+    const ok = await Model.carregar();
+    if (!ok) throw new Error("Sem rascunho local e sem planilha");
+  } catch (e) {
     document.body.innerHTML =
-      "<p style='padding:40px;color:#F8FAFC'>⚠️ URL_PLANILHA ainda é o placeholder. Cole a URL publicada no funcoes.js.</p>";
+      "<p style='padding:40px;color:#F8FAFC'>⚠️ <b>" + e.message + "</b>" +
+      "<br><br>URL usada: <code>" + URL_PLANILHA + "</code></p>";
     return;
   }
 
