@@ -18,7 +18,7 @@
 
 1. Crie um repositório e suba os 4 arquivos
 2. **Settings → Pages → Source: main branch → Save**
-3. O sistema fica disponível em `https://SEUUSUARIO.github.io/NOMEREPO/`
+3. O sistema fica disponível em `https://laraoberderfer.github.io/avaliacao-pitch/`
 
 ---
 
