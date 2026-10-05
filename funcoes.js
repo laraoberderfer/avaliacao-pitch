@@ -10,7 +10,7 @@
 // Arquivo → Compartilhar → Publicar na web → aba "Grupos" → CSV
 // gid=0 = primeira aba. Se "Grupos" não for a primeira, use o gid dela
 // (visível na URL do Sheets após #gid=)
-const URL_PLANILHA = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRFoisftRG6m9mrbx5OtgJcfXX3qfGGX1Wb2qCM2IxtwEhrptvubANuW8gAkvmTQA/pub?gid=0&single=true&output=csv";
+const URL_PLANILHA = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRsJJql2PQmqdTB8cNYP7DqIcBc0P6uM0eUwacQiD8xNu9W7Ns9ndZzu1sFfYwDBDTtJ1PF6tVE_2Df/pub?gid=0&single=true&output=csv";
 
 const CONFIG_PADRAO = {
   instituicao: "IFSC — Câmpus Chapecó",
